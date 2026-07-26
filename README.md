@@ -6,23 +6,29 @@ The Custom GUI-Based Annotation Tool is a desktop application developed for effi
 
 The tool integrates DeepSORT tracking to automatically propagate bounding boxes across consecutive frames, making dataset preparation faster for computer vision projects.
 
+A comprehensive object detection annotation tool with manual labeling, semi-automatic labeling using ML models, and feedback learning capabilities.
+
+
 ---
 
 ## Features
 
-- Desktop GUI built with PyQt5
-- Image annotation
-- Video annotation
-- Automatic object tracking
-- DeepSORT integration
-- YOLO-compatible annotation format
-- Bounding box editing
-- Label management
-- Export annotations
-- Keyboard shortcuts
+- **Input Support**: Load images and videos for annotation
+- **Manual Labeling**: Draw bounding boxes and assign class labels
+- **Semi-Automatic Labeling**: ML pipeline with YOLOv5 + DeepSORT + LSTM
+- **Editable Predictions**: Edit auto-generated annotations
+- **Feedback Learning**: Model learns from user corrections
+- **Export Functionality**: Multiple formats (YOLO, PascalVOC, COCO, CSV)
 
 ---
+### Navigation Features
 
+- **Previous/Next**: Use the navigation toolbar buttons or Left/Right arrow keys
+- **Load Directory**: File → Open Directory to load all files from a folder
+- **Auto-advance**: Check "Auto-advance after annotation" to automatically move to next file
+- **File Counter**: Shows current position (e.g., "File 3 of 15")
+
+---
 ## Tech Stack
 
 - Python
@@ -37,19 +43,30 @@ The tool integrates DeepSORT tracking to automatically propagate bounding boxes 
 ## Project Structure
 
 ```
-Semi-supervised-Annotation-Tool/
-│
-├── gui/
-├── tracker/
-├── annotation/
-├── utils/
-├── screenshots/
-├── main.py
-├── requirements.txt
-└── README.md
+tool_project/
+├── main.py                 # Main application entry point
+├── gui/                    # GUI components
+│   ├── __init__.py
+│   ├── main_window.py      # Main application window
+│   ├── image_viewer.py     # Image/video viewer widget
+│   └── annotation_panel.py # Annotation controls panel
+├── core/                   # Core functionality
+│   ├── __init__.py
+│   ├── annotation.py       # Annotation data structures
+│   ├── video_processor.py  # Video processing utilities
+│   └── export_manager.py   # Export functionality
+├── ml/                     # Machine learning components
+│   ├── __init__.py
+│   ├── yolo_detector.py    # YOLOv5 integration
+│   ├── tracker.py          # DeepSORT tracking
+│   └── feedback_learner.py # Feedback learning system
+├── utils/                  # Utility functions
+│   ├── __init__.py
+│   ├── file_utils.py       # File handling utilities
+│   └── config.py           # Configuration management
+└── models/                 # Pre-trained models storage
 ```
 
----
 
 ## Workflow
 
@@ -105,6 +122,3 @@ python main.py
 
 Deeksha D. Nagarkar
 
-## Author
-
-Deeksha D. Nagarkar
